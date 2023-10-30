@@ -1,2 +1,2 @@
-web: gunicorn blogforum.wsgi
+web: gunicorn forum.wsgi
 
