@@ -30,7 +30,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = ['8000-frida010-echoforum-bnjhsrlp5u.us2.codeanyapp.com',
-                 'blogforum.herokuapp.com', 'localhost', 'https://git.heroku.com/echoforum.git']
+                 'blogforum.herokuapp.com', 'localhost', 'https://git.heroku.com/echoforum.git', 'echoforum-976e249ed966.herokuapp.com']
 
 
 # Application definition
