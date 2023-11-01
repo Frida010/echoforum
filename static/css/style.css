@@ -1,7 +1,9 @@
+/* Background color for the entire page */
 body {
     background-color: #F9FAFC;
 }
 
+/* Brand styling */
 .brand {
     font-family: Lato, sans-serif;
     font-size: 1.4rem;
@@ -9,31 +11,38 @@ body {
     color: #4A4A4F;
 }
 
+/* Light font weight */
 .thin {
     font-weight: 300;
 }
 
+/* Background color for light areas */
 .light-bg {
     background-color: #fff;
 }
 
+/* Background color for dark areas */
 .dark-bg {
     background-color: #445261;
 }
 
+/* Main background color */
 .main-bg {
     background-color: #F9FAFC;
 }
 
+/* Card styling */
 .card {
     border: none;
     background-color: transparent;
 }
 
+/* Maintains image positioning */
 .image-container {
     position: relative;
 }
 
+/* Styling for image overlay effect */
 .image-flash {
     position: absolute;
     bottom: 5%;
@@ -42,12 +51,14 @@ body {
     background-color: #445261;
 }
 
+/* Author text styling */
 .author {
     color: rgb(255, 255, 255);
     margin: 4px;
     text-transform: uppercase;
 }
 
+/* Main masthead style */
 .masthead {
     margin-top: 10px;
     overflow: hidden;
@@ -57,17 +68,20 @@ body {
     width: 100%;
 }
 
+/* Styling for text within the masthead */
 .masthead-text {
     background-color: #445261;
     color: white;
     position: relative;
 }
 
+/* Styling for the image in the masthead */
 .masthead-image {
     position: relative;
     overflow: hidden;
 }
 
+/* Overlay effect for masthead image */
 .masthead-image:after {
     content: "";
     position: absolute;
@@ -82,57 +96,67 @@ body {
     z-index: 100;
 }
 
+/* Styling for post links */
 .post-link {
     text-decoration: none;
     color: #445261;
 }
 
+/* Change link color on hover */
 .post-link:hover,
 .page-link {
-    color: #E84610;
+    color: #777676;
 }
 
+/* Styling for post titles */
 .post-title {
     margin-top: 20%;
     margin-left: 5%;
 }
 
+/* Styling for post subtitles */
 .post-subtitle {
     margin-left: 5%;
     color: lightgray;
 }
 
+/* Styling for signup button */
 .btn-signup {
     background-color: #23BBBB;
     color: #fff;
 }
 
+/* Change button color on hover and click */
 .btn-signup:hover,
 .btn-signup:active {
     background-color: #fff;
     color: #23BBBB;
 }
 
+/* Link styling */
 .link {
     color: #23BBBB;
     text-decoration: none;
 }
 
+/* Change link color on hover and click */
 .link:hover,
 .link:active {
     color: #445261;
     text-decoration: underline;
 }
 
+/* Styling for like buttons */
 .btn-like {
-    color: #E84610;
+    color: #ff0606;
     border: none;
     background: transparent;
 }
 
+/* Change like button color on hover and click */
 .btn-like:hover,
 .btn-like:active {
-    color: #E84610;
+    color: #ff4242;
     background: transparent;
     border: none;
 }
