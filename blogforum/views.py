@@ -2,7 +2,35 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
 from .models import Post
-from .forms import CommentForm
+from .forms import CommentForm, PostForm
+
+
+class PostCreate(View):
+
+    def get(self, request):
+        form = PostForm()
+        return render(
+            request,
+            "post_create.html",  
+            {
+                "form": form,
+            },
+        )
+
+    def post(self, request):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
+        return render(
+            request,
+            "post_create.html",
+            {
+                "form": form,
+            },
+        )
 
 
 class PostList(generic.ListView):
