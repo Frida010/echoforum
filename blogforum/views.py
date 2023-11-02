@@ -1,36 +1,8 @@
 from django.shortcuts import render, get_object_or_404, reverse
 from django.views import generic, View
 from django.http import HttpResponseRedirect
-from .models import Post
+from .models import Post, Category
 from .forms import CommentForm, PostForm
-
-
-class PostCreate(View):
-
-    def get(self, request):
-        form = PostForm()
-        return render(
-            request,
-            "post_create.html",  
-            {
-                "form": form,
-            },
-        )
-
-    def post(self, request):
-        form = PostForm(request.POST)
-        if form.is_valid():
-            post = form.save(commit=False)
-            post.author = request.user
-            post.save()
-            return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
-        return render(
-            request,
-            "post_create.html",
-            {
-                "form": form,
-            },
-        )
 
 
 class PostList(generic.ListView):
@@ -61,7 +33,6 @@ class PostDetail(View):
                 "comment_form": CommentForm()
             },
         )
-
 
     def post(self, request, slug, *args, **kwargs):
         queryset = Post.objects.filter(status=1)
@@ -94,6 +65,7 @@ class PostDetail(View):
             },
         )
 
+
 class PostLike(View):
 
     def post(self, request, slug):
@@ -105,3 +77,45 @@ class PostLike(View):
             post.likes.add(request.user)
 
         return HttpResponseRedirect(reverse('post_detail', args=[slug]))
+
+
+class PostCreate(View):
+
+    def get(self, request):
+        form = PostForm()
+        return render(
+            request,
+            "post_create.html",
+            {
+                "form": form,
+            },
+        )
+
+    def post(self, request):
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.save()
+            return HttpResponseRedirect(reverse('post_detail', args=[post.slug]))
+        return render(
+            request,
+            "post_create.html",
+            {
+                "form": form,
+            },
+        )
+
+
+class PostsByCategory(View):
+
+    def get(self, request, category_id):
+        category = get_object_or_404(Category, id=category_id)
+        posts = Post.objects.filter(
+            category=category, status=1).order_by('-created_on')
+
+        return render(
+            request,
+            'posts_by_category.html',
+            {'category': category, 'posts': posts}
+        )
